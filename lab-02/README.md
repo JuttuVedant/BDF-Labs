@@ -4,7 +4,7 @@
 **Registration number:** 252U1R9048  
 **Section:** Gen AI 2A(304)
 
-**Live link:** Add the Lab 2 deployment URL here after deployment.
+**Live link:** [(https://bdf-lab-02-vedant.onrender.com/books/)].
 
 ## Objective
 Connect an Express server to a SQLite database and expose CRUD operations over HTTP.
@@ -81,3 +81,22 @@ Add any actual problems you encounter and how you solved them.
 - `initializeDBAndServer()` opens the database and creates the table before starting Express.
 - Do not commit `node_modules` or `.env`.
 - `library.db` is included as the database output for this lab.
+## Live Deployment
+
+The application is deployed on Render.
+
+Live URL: https://bdf-lab-02-vedant.onrender.com
+
+### Live API Testing Screenshots
+
+**POST - Add a Book**
+![POST](screenshots/render-post-book.png)
+
+**PUT - Update a Book**
+![PUT](screenshots/render-put-book.png)
+
+**DELETE - Delete a Book**
+![DELETE](screenshots/render-delete-book.png)
+
+**Verify Deletion**
+![Verify Deletion](screenshots/render-verify-deletion.png)
