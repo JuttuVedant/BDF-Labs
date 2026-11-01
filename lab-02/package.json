@@ -1,0 +1,21 @@
+{
+  "name": "bdf-lab-02-sqlite-crud",
+  "version": "1.0.0",
+  "description": "BDF Lab 2 - SQLite database and CRUD routes",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start:once": "node server.js"
+  },
+  "author": "Juttu Vedant",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
