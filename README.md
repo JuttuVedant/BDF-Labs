@@ -4,7 +4,9 @@
 **Registration number:** 252U1R9048  
 **Section:** GEN AI 2A(304)
 
-**Live link:** Not deployed yet. Add your public deployment URL here after deploying.
+## Live Link
+
+https://bdf-lab-01-vedant.onrender.com
 
 ## Objective
 
