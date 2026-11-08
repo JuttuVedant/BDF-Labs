@@ -44,6 +44,15 @@ app.get("/books/", async (request, response) => {
         max_price
     } = request.query;
 
+    const queryValues = [search_q, order_by, order, limit, offset, min_price, max_price]
+        .filter((value) => value !== undefined);
+
+    if (queryValues.some((value) => typeof value !== "string")) {
+        return response.status(400).json({
+            message: "Each query parameter must have exactly one value"
+        });
+    }
+
     const validColumns = ["id", "title", "author", "price", "pages"];
 
     if (!validColumns.includes(order_by)) {
@@ -64,6 +73,8 @@ app.get("/books/", async (request, response) => {
     const offsetValue = Number(offset);
 
     if (
+        limit.trim() === "" ||
+        offset.trim() === "" ||
         !Number.isInteger(limitValue) ||
         limitValue <= 0 ||
         !Number.isInteger(offsetValue) ||
@@ -75,8 +86,8 @@ app.get("/books/", async (request, response) => {
     }
 
     if (
-        (min_price !== undefined && !Number.isFinite(Number(min_price))) ||
-        (max_price !== undefined && !Number.isFinite(Number(max_price)))
+        (min_price !== undefined && (min_price.trim() === "" || !Number.isFinite(Number(min_price)))) ||
+        (max_price !== undefined && (max_price.trim() === "" || !Number.isFinite(Number(max_price))))
     ) {
         return response.status(400).json({
             message: "Price values must be numeric"
@@ -125,7 +136,7 @@ app.get("/books/", async (request, response) => {
 
 // POST a new book
 app.post("/books/", async (request, response) => {
-    const { title, author, price, pages } = request.body;
+    const { title, author, price, pages } = request.body || {};
 
     if (typeof title !== "string" || title.trim() === "") {
         return response.status(400).json({
@@ -160,18 +171,19 @@ app.post("/books/", async (request, response) => {
         title.trim(),
         author.trim(),
         price,
-        pages
+        pages ?? null
     ]);
 
     response.status(201).json({
-        message: "Book Added Successfully"
+        message: "Book Added Successfully",
+        id: result.lastID
     });
 });
 
 // PUT update a book by ID
 app.put("/books/:bookId/", async (request, response) => {
     const { bookId } = request.params;
-    const { title, author, price, pages } = request.body;
+    const { title, author, price, pages } = request.body || {};
 
     const updateBookQuery = `
         UPDATE book
@@ -187,7 +199,7 @@ app.put("/books/:bookId/", async (request, response) => {
         title,
         author,
         price,
-        pages,
+        pages ?? null,
         bookId
     ]);
 
