@@ -174,9 +174,8 @@ app.post("/books/", async (request, response) => {
         pages ?? null
     ]);
 
-    response.status(201).json({
-        message: "Book Added Successfully",
-        id: result.lastID
+    return response.status(201).json({
+        message: "Book Added Successfully"
     });
 });
 
