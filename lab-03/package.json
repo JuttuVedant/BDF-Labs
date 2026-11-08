@@ -1,14 +1,19 @@
 {
-  "name": "lab-02",
+  "name": "bdf-lab-03",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "REST API with SQLite, query parameters, validation, and debugging",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "backend",
+    "express",
+    "sqlite",
+    "rest-api"
+  ],
+  "author": "Juttu Vedant",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
