@@ -5,8 +5,13 @@
 - **Registration Number:** 252U1R9048
 - **Section:** Gen AI 2A(304)
 
-**Live URL:** https://bdf-lab-03-vedant.onrender.com/  
-**Books endpoint:** https://bdf-lab-03-vedant.onrender.com/books/
+## Live Deployment
+
+- **Live server:** [https://bdf-lab-03-vedant.onrender.com/](https://bdf-lab-03-vedant.onrender.com/)
+- **Books API (GET all books):** [https://bdf-lab-03-vedant.onrender.com/books/](https://bdf-lab-03-vedant.onrender.com/books/)
+- **Search and filter example:** [GET books matching "Atomic" within a price range](https://bdf-lab-03-vedant.onrender.com/books/?search_q=Atomic&order_by=price&order=DESC&limit=5&offset=0&min_price=100&max_price=600)
+
+The remaining endpoints use the same live base URL with the HTTP methods and paths listed below.
 
 ## 1. Project Description
 This project implements a REST API for managing books using Node.js, Express.js, and SQLite. It supports CRUD operations, partial title search, sorting, pagination, price filtering, input validation, and appropriate HTTP status codes.
