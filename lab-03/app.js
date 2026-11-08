@@ -11,6 +11,17 @@ const PORT = process.env.PORT || 3000;
 
 let db;
 
+// API welcome route
+app.get("/", (request, response) => {
+    return response.status(200).json({
+        message: "Lab 3 REST API is running",
+        endpoints: {
+            books: "/books/",
+            bookById: "/books/:bookId/"
+        }
+    });
+});
+
 // GET a book by ID
 app.get("/books/:bookId/", async (request, response) => {
     const { bookId } = request.params;
