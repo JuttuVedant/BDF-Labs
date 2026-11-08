@@ -1,0 +1,35 @@
+name: Temporary Lab 3 PDF Export
+
+on:
+  push:
+    branches:
+      - pdf-export-report-20261108
+
+permissions:
+  contents: read
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PDF tools
+        run: python -m pip install --upgrade pip reportlab pillow
+
+      - name: Build screenshot pages
+        run: python tools/create_lab3_screenshot_pdf.py
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bdf-lab-03-screenshot-pages
+          path: output/BDF_Lab_03_Screenshots.pdf
+          if-no-files-found: error
+          retention-days: 1
